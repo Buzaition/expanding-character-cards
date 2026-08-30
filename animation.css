@@ -63,13 +63,21 @@ body{
 .superhero-card .superhero-circle::before{
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--hero_clr);
+    inset: 0;
+    background-image: var(--card-texture);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
     clip-path: circle(120px at center);
-    transition: 0.5s;
+    transition: clip-path 0.5s ease;
+}
+
+.red-card{
+    --card-texture: url('images/EmbossedRedHoneycombGrid.png');
+}
+
+.black-card{
+    --card-texture: url('images/EmbossedBlackHoneycombGrid.png');
 }
 
 .superhero-card:hover .superhero-circle::before{
@@ -84,6 +92,7 @@ body{
     transition: 0.5s;
     transition-delay: 0.5s;
     transform-origin: center;
+    z-index: 1;
 }
 
 .superhero-card:hover .superhero-circle .hero-logo{
