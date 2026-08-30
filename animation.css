@@ -50,12 +50,14 @@ body{
     left: 0;
     width: 100%;
     height: 100%;
+    border: none;
+    background: transparent;
     border-radius: 20px;
     overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
+    box-shadow: none;
 }
 
 .superhero-card .superhero-circle::before{
@@ -81,6 +83,7 @@ body{
     object-fit: contain;
     transition: 0.5s;
     transition-delay: 0.5s;
+    transform-origin: center;
 }
 
 .superhero-card:hover .superhero-circle .hero-logo{
@@ -152,33 +155,20 @@ body{
 }
 
 .superhero-card:hover .hero-logo{
-    animation: unset !important;
+    animation: none !important;
     display: none;
 }
 
-.rotate{
-    animation: rotation 8s infinite linear;
+.animotion-pulse{
+    animation: animotion-pulse 1.8s ease-in-out infinite;
 }
 
-.rotate2{
-    animation: rotation2 8s infinite linear;
-}
-
-@keyframes rotation{
-    from{
-        transform: rotate(0deg);
+@keyframes animotion-pulse{
+    0%, 100%{
+        transform: scale(1);
     }
-    to{
-        transform: rotate(359deg);
-    }
-}
-
-@keyframes rotation2{
-    from{
-        transform: rotate(359deg);
-    }
-    to{
-        transform: rotate(0deg);
+    50%{
+        transform: scale(1.08);
     }
 }
 
