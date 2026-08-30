@@ -1,0 +1,215 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+html,
+body{
+    min-height: 100%;
+}
+
+body{
+    min-height: 100vh;
+    background: linear-gradient(270deg, #f7a3a3 0%, #d96b6b 28%, #242424 68%, #050505 100%);
+    background-attachment: fixed;
+    overflow-x: hidden;
+}
+
+.main{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    min-height: 100vh;
+    padding: 40px 20px;
+}
+
+.superhero-card{
+    position: relative;
+    width: 300px;
+    height: 350px;
+    margin: 20px;
+    transition: 0.5s;
+    transition-delay: 0.5s;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.superhero-card:hover{
+    width: 600px;
+    transition-delay: 0s;
+}
+
+.superhero-card .superhero-circle{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
+}
+
+.superhero-card .superhero-circle::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--hero_clr);
+    clip-path: circle(120px at center);
+    transition: 0.5s;
+}
+
+.superhero-card:hover .superhero-circle::before{
+    clip-path: circle(400px at center);
+}
+
+.superhero-card .superhero-circle .hero-logo{
+    position: relative;
+    width: 200px;
+    max-height: 200px;
+    object-fit: contain;
+    transition: 0.5s;
+    transition-delay: 0.5s;
+}
+
+.superhero-card:hover .superhero-circle .hero-logo{
+    transform: scale(0);
+    transition-delay: 0s;
+}
+
+.hero-content{
+    position: relative;
+    width: 50%;
+    left: 20%;
+    padding: 20px 20px 20px 40px;
+    opacity: 0;
+    transition: 0.5s;
+    visibility: hidden;
+    z-index: 2;
+}
+
+.superhero-card:hover .hero-content{
+    left: 0;
+    opacity: 1;
+    visibility: visible;
+    transition-delay: 0.5s;
+}
+
+.hero-content h2{
+    color: white;
+    text-transform: uppercase;
+    font-size: 30px;
+    line-height: normal;
+    margin-bottom: 10px;
+}
+
+.hero-content p{
+    color: #fff;
+    line-height: 1.5;
+}
+
+.hero-content a{
+    position: relative;
+    color: rgb(2, 2, 2);
+    background: white;
+    padding: 10px 20px;
+    border-radius: 3px;
+    margin-top: 10px;
+    display: inline-block;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.superhero-card .hero-product{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    height: 500px;
+    max-width: 55%;
+    object-fit: contain;
+    transition: 0.5s;
+    transition-delay: 0s;
+    z-index: 3;
+    pointer-events: none;
+}
+
+.superhero-card:hover .hero-product{
+    left: 72%;
+    transform: translate(-50%, -50%) scale(1);
+    transition-delay: 0s;
+}
+
+.superhero-card:hover .hero-logo{
+    animation: unset !important;
+    display: none;
+}
+
+.rotate{
+    animation: rotation 8s infinite linear;
+}
+
+.rotate2{
+    animation: rotation2 8s infinite linear;
+}
+
+@keyframes rotation{
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(359deg);
+    }
+}
+
+@keyframes rotation2{
+    from{
+        transform: rotate(359deg);
+    }
+    to{
+        transform: rotate(0deg);
+    }
+}
+
+@media(max-width: 991px){
+    body{
+        background: linear-gradient(180deg, #f7a3a3 0%, #b05b5b 38%, #191919 72%, #050505 100%);
+    }
+
+    .superhero-card{
+        width: min(100%, 350px);
+        max-width: 350px;
+        align-items: flex-start;
+    }
+
+    .superhero-card:hover{
+        width: min(100%, 350px);
+        height: 630px;
+    }
+
+    .superhero-card:hover .hero-product{
+        top: initial;
+        bottom: 30px;
+        left: 50%;
+        transform: translate(-50%, 0%) scale(1);
+        height: 300px;
+        max-width: 90%;
+    }
+
+    .superhero-card .hero-content{
+        width: 100%;
+        left: 0;
+        padding: 40px;
+    }
+}
